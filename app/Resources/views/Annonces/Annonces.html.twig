@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+  {% block body %}
+  <table class="table">
+<thead>
+  <tr>
+    <th>#</th>
+    <th>Villes</th>
+    <th>Titre annonce</th>
+    <th>l'annonce</th>
+  </tr>
+</thead>
+<tbody>
+{% for toutesAnnonces in annonces %}
+  <tr>
+    <th scope="row">{{toutesAnnonces.id}}</th>
+    <td>{{toutesAnnonces.ville}}</td>
+    <td>{{toutesAnnonces.titreAnnonce}}</td>
+    <td><a href='/annonces/details/{{toutesAnnonces.id}}' class="btn btn-info">voir l'annonce</a></td>
+
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+  {% endblock %}
