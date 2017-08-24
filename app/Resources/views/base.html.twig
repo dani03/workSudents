@@ -14,13 +14,14 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" rel="stylesheet">
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}" />
 
   </head>
 
   <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">WorkStudents</a>
+      <a class="navbar-brand" href="/">WorkStudents</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -45,11 +46,11 @@
         </ul>
       <ul class="navbar-nav  mr-auto">
         {% if is_granted('USER')%}
-        <li><a href="/profile">{app.user.username}</a></li>
-        <li><a href="/logout">deconnexion</a></li>
+        <li class="nav-item"><a class="nav-link" href="/profile">{app.user.username}</a></li>
+        <li class="nav-item"><a class="nav-link" href="/logout">deconnexion</a></li>
         {% else %}
-        <li><a href="/login">connexion</a></li>
-        <li><a href="/register">inscription</a></li>
+        <li class="nav-item"><a class="nav-link" href="/login">connexion</a></li>
+        <li class="nav-item"><a class="nav-link" href="/register">inscription</a></li>
         {% endif %}
 
       </ul>

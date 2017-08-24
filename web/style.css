@@ -1,0 +1,31 @@
+strong{
+  color: red;
+  font-size: 90px;
+
+}
+ .affiche{
+color: #eee;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 5%;
+ }
+.btn-success {
+  width: 190px;
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+body{
+  background: url('https://static.pexels.com/photos/296878/pexels-photo-296878.jpeg');
+  background-position: center;
+  background-size: cover;
+}
+#_submit{
+  cursor: pointer;
+}
+.fos_user_registration_register {
+  input {
+    @extend .form-control;
+  }
+}
