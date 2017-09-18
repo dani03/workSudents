@@ -17,15 +17,10 @@ color: #eee;
   justify-content: center;
 }
 body{
-  background: url('https://static.pexels.com/photos/296878/pexels-photo-296878.jpeg');
+  background: url('');
   background-position: center;
   background-size: cover;
 }
 #_submit{
   cursor: pointer;
-}
-.fos_user_registration_register {
-  input {
-    @extend .form-control;
-  }
 }

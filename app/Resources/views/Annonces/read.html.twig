@@ -1,7 +1,14 @@
 
 {% extends 'base.html.twig' %}
   {% block body %}
-  <h3>  ici nous veront les details <br>
-    <td><a href='' class="btn btn-danger"> accepter</a></td>
-    <td><a href='/annonces' class="btn btn-info">retour</a></td>
+  <br>
+  <h2 class="page-header">{{annonce.titreAnnonce}}</h2>
+  <p>
+    {{annonce.description}}
+  </p>
+    <a href='#' class="btn btn-danger"> accepter</a>
+    <a href='/annonces' class="btn btn-info">retour à la liste</a>
+    <a href='/annonces/editer/{id}' class="btn btn-default">modifier</a>
+
+
   {% endblock %}

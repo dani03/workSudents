@@ -84,7 +84,59 @@ class annoncesController extends Controller
      */
     public function updateAction($id, Request $request)
     {
-        return $this->render('Annonces/update.html.twig');
+      $annonce =$this->getDoctrine()
+                 ->getRepository('AppBundle:toutesAnnonces')
+                 ->find($id);
+
+                 $MonAnnonce->setNom($MonAnnonce->getNom());
+                 $MonAnnonce->setEmail($MonAnnonce->getEmail());
+                 $MonAnnonce->setTitreAnnonce($MonAnnonce->getTitreAnnonce());
+                 $MonAnnonce->setVille($MonAnnonce->getVille());
+                 $MonAnnonce->setDescription($MonAnnonce->getDescription());
+
+                 $form = $this->createFormBuilder($MonAnnonce)
+                        // ->add('category')
+                        ->add('nom', TextType::class, array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:20px')))
+                        ->add('email', TextType::class, array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:20px')))
+                        ->add('titreAnnonce', TextType::class, array('attr' => array('class' => 'form-control', 'style' => 'margin-bottom:20px')))
+                        ->add('ville', TextType::class, array('attr' => array('class' =>'form-control', 'style' => 'margin-bottom:20px')))
+                        ->add('description', TextareaType::class, array('attr' => array('class' =>'form-control', 'style' => 'margin-bottom:20px')))
+                        ->add('save', SubmitType::class, array('label' => 'modifier une annonce', 'attr' => array('class' =>'btn btn-info', 'style' => 'margin-bottom:20px')))
+
+                        ->getForm();
+
+                      $form->handleRequest($request);
+
+                        if($form->isSubmitted() && $form->isValid()){
+                          // getData
+                          $nom = $form['nom']->getData();
+                          $email = $form['email']->getData();
+                          $titreAnnonce = $form['titreAnnonce']->getData();
+                          $ville = $form['ville']->getData();
+                          $description = $form['description']->getData();
+
+                            $em =$this->getDoctrine()->getManager();
+                            $MonAnnonce = $em->getRepository('AppBundle:annonce')->find($id);
+                          $MonAnnonce->setNom($nom);
+                          $MonAnnonce->setEmail($email);
+                          $MonAnnonce->setTitreAnnonce($titreAnnonce);
+                          $MonAnnonce->setVille($ville);
+                          $MonAnnonce->setDescription($description);
+
+
+                          $em->flush();
+                          $this->addFlash(
+                            'notice',
+                            'votre annonce a bien été modifié'
+                          );
+                          return $this->redirectToRoute('all_annonces');
+                        }
+
+       return $this->render('Annonces/update.html.twig', array(
+
+         'annonce' => $annonce,
+         'form' => $form->createView()
+       ));
     }
 
     /**
@@ -100,6 +152,13 @@ class annoncesController extends Controller
      */
     public function readAction($id)
     {
-        return $this->render('Annonces/read.html.twig');
+      $annonce =$this->getDoctrine()
+                 ->getRepository('AppBundle:toutesAnnonces')
+                 ->find($id);
+
+       return $this->render('Annonces/read.html.twig', array(
+
+         'annonce' => $annonce
+       ));
     }
 }
