@@ -69,7 +69,7 @@ class annoncesController extends Controller
                 $em->flush();
                 $this->addFlash(
                   'notice',
-                  'votre annonce a été ajouté'
+                  'votre annonce a été bien ajouté'
                 );
                 return $this->redirectToRoute('all_annonces');
               }
